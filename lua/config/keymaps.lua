@@ -48,17 +48,3 @@ map({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, { desc = "See code acti
 -- CMP
 map("n", "<leader>gf", vim.lsp.buf.format, { desc = "Autoformat" })
 
--- Auto double quotes
-map("v", "<A-q>", function()
-    local start_pos = vim.fn.getpos("'<")
-    local end_pos = vim.fn.getpos("'>")
-
-    end_pos[3] = end_pos[3] + 1
-
-    vim.fn.setpos(".", start_pos)
-    vim.cmd('normal! i"')
-    vim.fn.setpos(".", end_pos)
-    vim.cmd('normal! a"')
-  end,
-  { desc = "Wrap with quotes" }
-)
