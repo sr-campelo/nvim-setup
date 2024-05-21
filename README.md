@@ -1,7 +1,7 @@
 # Sr. Campelo Nvim Setup
 ## Relevant Organization
 
-![[.github/images/nvim-organization.png]]
+![Nvim folders organization](/.github/images/nvim-organization.png)
 
 init.lua load automatically all the plugins and the config (turned into a table in configload.lua)
 
