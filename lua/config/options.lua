@@ -21,8 +21,13 @@ opt.list = true    -- Show invisible characters
 opt.pumblend = 15  -- Popup blend
 opt.pumheight = 10 -- Maximum popup lines
 opt.relativenumber = true
-opt.scrolloff = 10
+opt.scrolloff = 7
 opt.shiftround = true  -- Round indent
 opt.shiftwidth = 2     -- Size of an indent
 opt.smartindent = true -- Insert indents automatically
 opt.splitbelow = true  -- New windows below the current one
+opt.wildmode = "longest:full,full"
+opt.termguicolors = true -- True color support
+opt.wrap = true -- Disable line wrap
+
+

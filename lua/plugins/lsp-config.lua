@@ -8,56 +8,51 @@ return {
   {
     "williamboman/mason-lspconfig.nvim",
     init = function()
+      require("mason").setup()
       require("mason-lspconfig").setup({
-        ensure_installed = { "lua_ls", "tsserver", "jsonls", "tailwindcss", "cssls" },
-        automatic_installation = true,
+        ensure_installed = {
+          "cssls",
+          "html",
+          "jsonls",
+          "tsserver",
+          "lua_ls",
+          "pyright",
+          "somesass_ls",
+          "tailwindcss",
+        }
       })
     end,
+
   },
   {
     "neovim/nvim-lspconfig",
     init = function()
-      local capabilities = require("cmp_nvim_lsp").default_capabilities()
       local lspconfig = require("lspconfig")
-      lspconfig.lua_ls.setup({
-        capabilities = capabilities,
-      })
-      lspconfig.tsserver.setup({
-        capabilities = capabilities,
-      })
-      lspconfig.html.setup({
-        capabilities = capabilities,
-      })
-      lspconfig.jsonls.setup({
-        capabilities = capabilities,
-      })
-      lspconfig.tailwindcss.setup({
-        capabilities = capabilities,
-      })
-      lspconfig.cssls.setup({
-        capabilities = capabilities,
-      })
-      vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
-      vim.keymap.set("n", "gd", vim.lsp.buf.definition, {})
-      vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, {})
-    end,
+      local capabilities = require("cmp_nvim_lsp").default_capabilities()
+      lspconfig.cssls.setup({ capabilities = capabilities })
+      lspconfig.html.setup({ capabilities = capabilities })
+      lspconfig.jsonls.setup({ capabilities = capabilities })
+      lspconfig.tsserver.setup({ capabilities = capabilities })
+      lspconfig.lua_ls.setup({ capabilities = capabilities })
+      lspconfig.pyright.setup({ capabilities = capabilities })
+      lspconfig.somesass_ls.setup({ capabilities = capabilities })
+      lspconfig.tailwindcss.setup({ capabilities = capabilities })
+    end
   },
   {
     "nvimtools/none-ls.nvim",
     dependencies = {
       "nvimtools/none-ls-extras.nvim",
     },
-    config = function()
+    init = function()
       local null_ls = require("null-ls")
       null_ls.setup({
         sources = {
-          require("none-ls.diagnostics.eslint_d"),
           null_ls.builtins.formatting.stylua,
           null_ls.builtins.formatting.prettier,
+          require("none-ls.diagnostics.eslint"),
         },
       })
-
-      vim.keymap.set("n", "<leader>gf", vim.lsp.buf.format, {})
     end,
   },
 }

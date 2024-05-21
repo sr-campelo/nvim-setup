@@ -16,5 +16,6 @@ return {
     require("mini.operators").setup()
     require("mini.pairs").setup()
     require("mini.indentscope").setup()
+    require("mini.comment").setup()
   end,
 }
